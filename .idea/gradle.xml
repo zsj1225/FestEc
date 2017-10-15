@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/example" />
             <option value="$PROJECT_DIR$/zsj-annotations" />
+            <option value="$PROJECT_DIR$/zsj-compiler" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

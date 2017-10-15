@@ -1,1 +1,1 @@
-include ':example', ':zsj-annotations'
+include ':example', ':zsj-annotations', ':zsj-compiler'

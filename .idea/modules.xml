@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/FestEc.iml" filepath="$PROJECT_DIR$/FestEc.iml" />
       <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
       <module fileurl="file://$PROJECT_DIR$/zsj-annotations/zsj-annotations.iml" filepath="$PROJECT_DIR$/zsj-annotations/zsj-annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zsj-compiler/zsj-compiler.iml" filepath="$PROJECT_DIR$/zsj-compiler/zsj-compiler.iml" />
     </modules>
   </component>
 </project>
