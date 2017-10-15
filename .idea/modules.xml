@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FestEc.iml" filepath="$PROJECT_DIR$/FestEc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zsj-annotations/zsj-annotations.iml" filepath="$PROJECT_DIR$/zsj-annotations/zsj-annotations.iml" />
-      <module fileurl="file://$PROJECT_DIR$/zsj-compiler/zsj-compiler.iml" filepath="$PROJECT_DIR$/zsj-compiler/zsj-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eclib/eclib.iml" filepath="$PROJECT_DIR$/eclib/eclib.iml" />
     </modules>
   </component>
 </project>

@@ -1,1 +1,1 @@
-include ':example', ':zsj-annotations', ':zsj-compiler', ':zsj-annotations'
+include ':app', ':eclib'
