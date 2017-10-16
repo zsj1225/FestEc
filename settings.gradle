@@ -1,1 +1,1 @@
-include ':app', ':eclib'
+include ':app', ':eclib', ':corelib'
