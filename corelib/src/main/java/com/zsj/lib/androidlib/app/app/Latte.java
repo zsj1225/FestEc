@@ -22,4 +22,9 @@ public final class Latte {
     public static <T> T getConfiguration(Object key) {
         return getConfigurator().getConfiguration(key);
     }
+
+    public static Context getApplicationContext() {
+        return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
+    }
+
 }

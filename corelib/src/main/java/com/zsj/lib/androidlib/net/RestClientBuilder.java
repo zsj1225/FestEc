@@ -1,9 +1,12 @@
 package com.zsj.lib.androidlib.net;
 
+import android.content.Context;
+
 import com.zsj.lib.androidlib.net.callback.IError;
 import com.zsj.lib.androidlib.net.callback.IFailure;
 import com.zsj.lib.androidlib.net.callback.IRequest;
 import com.zsj.lib.androidlib.net.callback.ISuccess;
+import com.zsj.lib.androidlib.ui.loader.LoaderStyle;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -28,6 +31,8 @@ public class RestClientBuilder {
     private IFailure mFailure;
     private IError mError;
     private RequestBody mBody;
+    private Context mContext;
+    private LoaderStyle mLoaderStyle;
 
     /**
      * 不能被包外的创建对象
@@ -73,13 +78,26 @@ public class RestClientBuilder {
         return this;
     }
 
+
     public RestClientBuilder error(IError error) {
         this.mError = error;
         return this;
     }
 
+    public RestClientBuilder loaderStyle(Context context, LoaderStyle loaderStyle) {
+        this.mContext = context;
+        this.mLoaderStyle = loaderStyle;
+        return this;
+    }
+
+    public RestClientBuilder loaderStyle(Context context) {
+        this.mContext = context;
+        this.mLoaderStyle = LoaderStyle.BallBeatIndicator;
+        return this;
+    }
+
     public final RestClient build() {
-        return new RestClient(mUrl, mParams, mRequest, mSuccess, mFailure, mError, mBody);
+        return new RestClient(mUrl, mParams, mRequest, mSuccess, mFailure, mError, mBody, mContext, mLoaderStyle);
     }
 
 }

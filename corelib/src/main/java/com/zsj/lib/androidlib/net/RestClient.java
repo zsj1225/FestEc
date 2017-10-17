@@ -1,10 +1,14 @@
 package com.zsj.lib.androidlib.net;
 
+import android.content.Context;
+
 import com.zsj.lib.androidlib.net.callback.IError;
 import com.zsj.lib.androidlib.net.callback.IFailure;
 import com.zsj.lib.androidlib.net.callback.IRequest;
 import com.zsj.lib.androidlib.net.callback.ISuccess;
 import com.zsj.lib.androidlib.net.callback.RestRequestCallBack;
+import com.zsj.lib.androidlib.ui.loader.LatteLoader;
+import com.zsj.lib.androidlib.ui.loader.LoaderStyle;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -29,10 +33,14 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private final Context CONTEXT;
+    private final LoaderStyle LOADERSTYLE;
 
     public RestClient(String url, Map<String, Object> params, IRequest request, ISuccess success
-            , IFailure failure, IError error, RequestBody body) {
+            , IFailure failure, IError error, RequestBody body, Context context, LoaderStyle loaderstyle) {
         this.URL = url;
+        this.CONTEXT = context;
+        LOADERSTYLE = loaderstyle;
         this.PARAMS.putAll(params);
         this.REQUEST = request;
         this.SUCCESS = success;
@@ -52,6 +60,12 @@ public class RestClient {
         if (REQUEST != null) {
             REQUEST.onRequestStart();
         }
+
+//        显示Loading
+        if (LOADERSTYLE != null) {
+            LatteLoader.showLoading(CONTEXT, LOADERSTYLE);
+        }
+
         switch (httpMethod) {
             case GET:
                 call = restService.get(URL, PARAMS);
@@ -74,7 +88,7 @@ public class RestClient {
     }
 
     private RestRequestCallBack getRequestCallBack() {
-        return new RestRequestCallBack(REQUEST, SUCCESS, FAILURE, ERROR);
+        return new RestRequestCallBack(REQUEST, SUCCESS, FAILURE, ERROR, LOADERSTYLE);
     }
 
     public void get() {

@@ -1,5 +1,10 @@
 package com.zsj.lib.androidlib.net.callback;
 
+import android.os.Handler;
+
+import com.zsj.lib.androidlib.ui.loader.LatteLoader;
+import com.zsj.lib.androidlib.ui.loader.LoaderStyle;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,12 +23,15 @@ public class RestRequestCallBack implements Callback<String> {
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;
+    private final LoaderStyle LOADERSTYLE;
+    private static final Handler mHandler = new Handler();
 
-    public RestRequestCallBack(IRequest REQUEST, ISuccess SUCCESS, IFailure FAILURE, IError ERROR) {
+    public RestRequestCallBack(IRequest REQUEST, ISuccess SUCCESS, IFailure FAILURE, IError ERROR, LoaderStyle loaderstyle) {
         this.REQUEST = REQUEST;
         this.SUCCESS = SUCCESS;
         this.FAILURE = FAILURE;
         this.ERROR = ERROR;
+        LOADERSTYLE = loaderstyle;
     }
 
 
@@ -49,6 +57,17 @@ public class RestRequestCallBack implements Callback<String> {
     public void onFailure(Call<String> call, Throwable t) {
         if (FAILURE != null) {
             FAILURE.onFailure();
+        }
+    }
+
+    private void onRequestFinish() {
+        if (LOADERSTYLE != null) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    LatteLoader.stopLoad();
+                }
+            }, 500);
         }
     }
 }
